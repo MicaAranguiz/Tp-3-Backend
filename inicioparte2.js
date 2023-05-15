@@ -18,7 +18,7 @@ class CentroDocente {
 }
 
 class Nuevo {
-    constructor(estado, nombre, apellido, dni, estadocivil) {
+    constructor( nombre, apellido, dni, estadocivil,estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -28,7 +28,7 @@ class Nuevo {
 }
 
 let nuevito1 = new Nuevo("Bianca", "Aranguiz", 44120834, "solita", "Sin cargo")
-let nuevito2 = new Nuevo("Biancaaaaaaaaaaa", "Aranguiz", 44120833, "solita", "Sin cargo")
+let nuevito2 = new Nuevo("Micaela", "Aranguiz", 44120833, "Casada", "Sin cargo")
 let centro1 = new CentroDocente()
 centro1.darAlta(nuevito1)
 centro1.imprimirdatosnuevo(nuevito1)

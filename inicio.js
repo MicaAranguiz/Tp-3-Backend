@@ -4,20 +4,21 @@ class Persona {
         this.apellido = apellido;
         this.dni = dni;
         this.estadocivil = estadocivil
+        this.datos = []
     }
     cambioestado(nuevoEstadoCivil) {
         console.log("El estado de esta persona está siendo modificado: ")
         this.estadocivil = nuevoEstadoCivil
     }
-   
+
 }
 class Estudiante extends Persona {
     constructor(nombre, apellido, dni, estadocivil, curso) {
         super(nombre, apellido, dni, estadocivil)
         this.curso = curso;
     }
-    imprimirdatosestudiante() {
-        console.log("LOS DATOS DEL ESTUDIANTE SON: " + this.nombre + ", " + this.apellido + ", " + this.dni + ", " + this.estadocivil + ", " +this.curso)
+    imprimirdatosestudiante(estudiante) {
+        this.datos.push(estudiante)
     }
     nuevoestudiante(nuevoCurso) {
         console.log("Matriculando a un nuevo estudiante: ")
@@ -34,11 +35,8 @@ class Empleado extends Persona {
     reasignardespacho() {
         console.log("reasignando nuevo despacho: ")
     }
-    imprimirdatosprofesor() {
-        console.log("LOS DATOS DE LA PERSONA SON: " + this.nombre + ", " + this.apellido + ", " + this.dni + ", " + this.estadocivil + ", " + this.añoinicio + ", " + this.nrolegajo + ", " + this.materia)
-    }
-    imprimirdatospersonal() {
-        console.log("LOS DATOS DE LA PERSONA SON: " + this.nombre + ", " + this.apellido + ", " + this.dni + ", " + this.estadocivil + ", " + this.añoinicio + ", " + this.nrolegajo + ", " + this.seccion)
+    imprimirdatospersonal(persona) {
+        this.datos.push(persona)
     }
 }
 
@@ -53,6 +51,9 @@ class Personal extends Empleado {
         console.log("Cambiando de sección de empleado: ")
         this.seccion = nuevoTrabajo;
     }
+    imprimirdatospersonal(persona) {
+        this.datos.push(persona)
+    }
 }
 class Profesor extends Empleado {
     constructor(nombre, apellido, dni, estadocivil, añoinicio, nrolegajo, materia) {
@@ -65,28 +66,36 @@ class Profesor extends Empleado {
         console.log("Cambiando departamento del profesor: ")
         this.materia = nuevamateria;
     }
+    imprimirdatosprofesor(profe) {
+        this.datosprofe.push(profe)
+    }
 
 }
 
 
 
 let estudiante1 = new Estudiante("Mariano", "Orozco", 44120834, "casado", "Laboratorio")
-console.log(estudiante1.imprimirdatosestudiante())
+let estudiantes = new Estudiante()
+estudiantes.imprimirdatosestudiante(estudiante1)
 estudiante1.cambioestado("soltero")
 estudiante1.nuevoestudiante("matematica")
-console.log(estudiante1.imprimirdatosestudiante())
+console.log("Todos los estudiantes: ")
+console.log(estudiantes.datos)
 
 
 
 let personal1 = new Personal("Luis", "Sinapellido", 1234567, "nosesabe", 2000, 12345, "Portero")
-console.log(personal1.imprimirdatospersonal())
+let empleados = new Empleado()
+empleados.imprimirdatospersonal(personal1)
 personal1.traslado("Profesor")
-console.log(personal1.imprimirdatospersonal())
+console.log("Todos los empleados: ")
+console.log(empleados.datos)
 
 
 
 let profesor1 = new Profesor("Alejandro", "Arriagada", 26789409, "Casado con hijos", 2001, 2345, "Backend")
-console.log(profesor1.imprimirdatosprofesor())
+let profesores = new Profesor()
+profesores.imprimirdatospersonal(profesor1)
 profesor1.cambiodepartamento("Matematica")
-console.log(profesor1.imprimirdatosprofesor())
-
+console.log("Todos los profesores: ")
+console.log(profesores.datos)
