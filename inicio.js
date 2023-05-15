@@ -69,6 +69,7 @@ class Profesor extends Empleado {
 }
 
 
+
 let estudiante1 = new Estudiante("Mariano", "Orozco", 44120834, "casado", "Laboratorio")
 console.log(estudiante1.imprimirdatosestudiante())
 estudiante1.cambioestado("soltero")
@@ -88,5 +89,4 @@ let profesor1 = new Profesor("Alejandro", "Arriagada", 26789409, "Casado con hij
 console.log(profesor1.imprimirdatosprofesor())
 profesor1.cambiodepartamento("Matematica")
 console.log(profesor1.imprimirdatosprofesor())
-
 
